@@ -1,2 +1,2 @@
 # ai-fitness-coach-backend
-AI-powered fitness &amp; habit tracking backend built with Java 17, Spring Boot, and AWS.
+AI-powered fitness platform for kids and adults built with Java 17 and Spring Boot
