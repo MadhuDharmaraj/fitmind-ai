@@ -4,6 +4,7 @@ import com.madhu.fitmind.dto.UserRequest;
 import com.madhu.fitmind.dto.UserResponse;
 import com.madhu.fitmind.model.User;
 import com.madhu.fitmind.model.UserType;
+import com.madhu.fitmind.service.UserCreationResult;
 import com.madhu.fitmind.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,10 +20,13 @@ public class FitnessController {
     }
     @PostMapping("/users")
     public UserResponse createUser(@RequestBody UserRequest request) {
+        UserCreationResult result = userService.createUser(request);
 
-        User user = userService.createUser(request);
-        return new UserResponse(user.getName(),
-                user.getId(),
-                user.getUserType().toString());
+        return new UserResponse(
+                result.getUser().getName(),
+                result.getUser().getId(),
+                result.getUser().getUserType().name(),
+                result.getRecommendation()
+        );
     }
 }
